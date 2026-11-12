@@ -67,7 +67,7 @@ export default function Sidebar() {
         <div className="min-w-0">
           <p className="font-extrabold tracking-tight leading-none text-[15px]">
             <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
-              THINKNOVA
+              THESQUORA
             </span>
           </p>
           <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 truncate">

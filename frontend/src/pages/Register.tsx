@@ -25,7 +25,7 @@ export default function Register() {
     try {
       await register({ name, email, password, department: department || null });
       await login(email, password);
-      push("success", "Account created — welcome to THINKNOVA");
+      push("success", "Account created — welcome to THESQUORA");
       navigate("/dashboard", { replace: true });
     } catch (err) {
       push("error", getErrorMessage(err, "Registration failed"));

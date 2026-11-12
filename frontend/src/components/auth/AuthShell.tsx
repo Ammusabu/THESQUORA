@@ -40,7 +40,7 @@ export default function AuthShell({ title, subtitle, children, footer }: Props) 
             </div>
             <div>
               <p className="font-extrabold tracking-tight text-white leading-none text-lg">
-                THINKNOVA
+                THESQUORA
               </p>
               <p className="text-[11px] text-white/80 mt-1">Knowledge Orbit</p>
             </div>
@@ -59,7 +59,7 @@ export default function AuthShell({ title, subtitle, children, footer }: Props) 
               <span className="text-white/85">Get cited answers.</span>
             </h1>
             <p className="mt-4 text-white/80 text-sm leading-relaxed">
-              THINKNOVA turns your internal PDFs, handbooks and research into a
+              THESQUORA turns your internal PDFs, handbooks and research into a
               permission-aware search & chat layer — powered by MongoDB Atlas
               Vector Search and grounded LLM responses.
             </p>
@@ -94,7 +94,7 @@ export default function AuthShell({ title, subtitle, children, footer }: Props) 
             <div>
               <p className="font-extrabold tracking-tight text-[15px]">
                 <span className="bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
-                  THINKNOVA
+                  THESQUORA
                 </span>
               </p>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
@@ -113,7 +113,7 @@ export default function AuthShell({ title, subtitle, children, footer }: Props) 
           </div>
 
           <p className="text-center text-xs text-slate-400 dark:text-slate-500 mt-6">
-            © {new Date().getFullYear()} THINKNOVA · All rights reserved
+            © {new Date().getFullYear()} THESQUORA · All rights reserved
           </p>
         </div>
       </div>

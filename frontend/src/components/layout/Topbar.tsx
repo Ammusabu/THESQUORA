@@ -15,7 +15,7 @@ const TITLES: Record<string, string> = {
 function titleFor(p: string): string {
   if (TITLES[p]) return TITLES[p];
   if (p.startsWith("/documents/")) return "Document Detail";
-  return "THINKNOVA";
+  return "THESQUORA";
 }
 
 function greetingFor(hour: number): { text: string; Icon: typeof Sun } {
