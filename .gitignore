@@ -1,0 +1,30 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# ---- Node ----
+node_modules/
+dist/
+.vite/
+*.log
+
+# ---- Data & artifacts ----
+backend/storage/
+backend/app/ml/artifacts/*.joblib
+backend/app/ml/artifacts/*.json
+
+# ---- Tests ----
+.pytest_cache/
+.coverage
+
+# ---- OS / IDE ----
+.DS_Store
+.idea/
+.vscode/

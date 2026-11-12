@@ -1,0 +1,76 @@
+HR|Employees are entitled to 20 days of annual paid vacation leave.
+HR|Maternity leave policy provides 180 days of paid leave for female employees.
+HR|The company observes public holidays as per the regional government calendar.
+HR|Performance reviews are conducted twice a year with manager feedback.
+HR|Sick leave must be reported to the reporting manager on the same day.
+HR|Employees may work from home up to two days per week with approval.
+HR|Health insurance covers the employee, spouse and up to two children.
+HR|The probation period for new hires is six months.
+HR|Referral bonus is paid after the referred candidate completes ninety days.
+HR|Resignation requires a notice period of sixty days.
+
+Technical|The API accepts POST requests with JSON payloads and returns status codes.
+Technical|Authentication uses JWT bearer tokens with a 24 hour expiry window.
+Technical|The database stores embeddings in a vector index for similarity search.
+Technical|Deploy the backend on a Python hosting service with environment variables.
+Technical|The frontend is built with React, TypeScript and Tailwind CSS.
+Technical|Rate limiting protects the login endpoint from brute force attacks.
+Technical|Use pip to install dependencies into an isolated virtual environment.
+Technical|Logging captures request IDs and error stack traces for debugging.
+Technical|The message queue processes asynchronous jobs in the background.
+Technical|Latency is measured in milliseconds for every search query.
+
+Finance|Quarterly revenue increased by twelve percent year over year.
+Finance|Operating expenses were reduced through vendor renegotiations.
+Finance|The accounts payable team processes invoices within thirty days.
+Finance|Capital expenditure approvals require CFO sign-off above ten thousand dollars.
+Finance|Payroll is disbursed on the last working day of every month.
+Finance|Tax deductions are applied as per the prevailing income tax slabs.
+Finance|Budget forecasts are reviewed monthly against actual spend.
+Finance|Audit findings must be resolved within the next fiscal quarter.
+Finance|Foreign exchange gains and losses are recorded in the ledger.
+Finance|The company maintains a working capital reserve of three months.
+
+Research|We propose a transformer based model for retrieval augmented generation.
+Research|Experimental results show a two percent improvement in recall at ten.
+Research|Ablation studies isolate the contribution of each module.
+Research|The dataset contains five thousand annotated question answer pairs.
+Research|Statistical significance is evaluated using a paired t-test.
+Research|Related work surveys dense retrieval and cross encoder reranking.
+Research|Future work will explore multi-lingual embeddings.
+Research|Our method is compared against strong baselines on two benchmarks.
+Research|The limitations section discusses dataset bias and compute cost.
+Research|Ethical approval was obtained from the institutional review board.
+
+Business|The product roadmap prioritises enterprise customers in the next cycle.
+Business|Customer churn decreased after the onboarding redesign.
+Business|Partnership discussions are ongoing with two channel distributors.
+Business|The go to market strategy focuses on mid-size companies.
+Business|Competitive pricing is reviewed against three major rivals.
+Business|Annual contract value grew faster than new customer count.
+Business|Sales pipeline conversion improved after the sales enablement program.
+Business|Market research indicates rising demand in the Asia Pacific region.
+Business|The executive summary outlines the three-year growth plan.
+Business|Stakeholder feedback is incorporated into the quarterly business review.
+
+Legal|This agreement is governed by the laws of the state of Karnataka.
+Legal|Either party may terminate with thirty days written notice.
+Legal|Confidential information must not be disclosed to third parties.
+Legal|The indemnity clause caps liability at the total fees paid.
+Legal|Intellectual property created during employment belongs to the company.
+Legal|Disputes shall be resolved by arbitration in Bengaluru.
+Legal|Data processing obligations comply with applicable privacy regulations.
+Legal|The non-compete obligation lasts twelve months after termination.
+Legal|Force majeure events excuse performance of contractual obligations.
+Legal|Amendments require written consent of both parties.
+
+General|The office cafeteria is open from eight in the morning until six.
+General|Visitor badges must be worn at all times within office premises.
+General|Parking is available in the basement for employees with permits.
+General|Fire drills are conducted every quarter for safety awareness.
+General|The lost and found desk is located at the main reception.
+General|Meeting rooms can be booked through the internal portal.
+General|The annual company offsite will be held in December.
+General|Feedback about facilities can be sent to the admin team.
+General|Printers are available on every floor near the pantry.
+General|Guests must be escorted by the hosting employee at all times.

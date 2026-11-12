@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+
+  body {
+    @apply font-sans antialiased transition-colors;
+    background-color: theme(colors.surface.warm);
+    color: theme(colors.slate.900);
+  }
+  html.dark body {
+    background-color: theme(colors.slate.950);
+    color: theme(colors.slate.100);
+  }
+
+  h1, h2, h3, h4 { @apply text-slate-900 dark:text-slate-100; }
+  p, span, div, li, td, th, label { @apply text-inherit; }
+}
+
+@layer components {
+  /* ---------- buttons ---------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-800 shadow-sm
+           dark:bg-brand-500 dark:hover:bg-brand-600;
+  }
+  .btn-secondary {
+    @apply btn bg-white border border-brand-100 text-brand-700 hover:bg-brand-50
+           dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-700;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700;
+  }
+
+  /* ---------- forms ---------- */
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900
+           placeholder:text-slate-400
+           focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500
+           dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-700 mb-1 dark:text-slate-300;
+  }
+
+  /* ---------- cards ---------- */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)]
+           dark:bg-slate-900 dark:border-slate-800 dark:shadow-none;
+  }
+  .card-table {
+    @apply card overflow-hidden;
+  }
+  .card-table thead {
+    @apply bg-brand-50 text-brand-700 dark:bg-slate-800/60 dark:text-slate-300;
+  }
+  .card-table tbody tr {
+    @apply border-t border-brand-100 dark:border-slate-800
+           hover:bg-brand-50 dark:hover:bg-slate-800/40;
+  }
+  .card-table td { @apply text-slate-700 dark:text-slate-200; }
+
+  /* ---------- badges & pills ---------- */
+  .pill {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium
+           bg-brand-100 text-brand-700 dark:bg-slate-800 dark:text-slate-300;
+  }
+
+  /* ---------- dividers ---------- */
+  .divider { @apply border-brand-100 dark:border-slate-800; }
+}
+
+/* ---------- Recharts dark-mode overrides ---------- */
+html.dark .recharts-text,
+html.dark .recharts-cartesian-axis-tick-value tspan,
+html.dark .recharts-legend-item-text {
+  fill: theme(colors.slate.300) !important;
+  color: theme(colors.slate.300) !important;
+}
+html.dark .recharts-cartesian-grid line {
+  stroke: theme(colors.slate.700);
+}
+html.dark .recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: theme(colors.slate.800) !important;
+  border-color: theme(colors.slate.700) !important;
+  color: theme(colors.slate.100) !important;
+}
+html.dark .recharts-tooltip-item { color: theme(colors.slate.100) !important; }
