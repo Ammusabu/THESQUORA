@@ -20,27 +20,19 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # 1. Download NLTK data (only needed on first deploy)
+    # Only lightweight startup tasks — models load lazily on first request
     try:
         from app.ml.nltk_setup import ensure_nltk_data
         ensure_nltk_data()
     except Exception as exc:
         logger.error("NLTK setup failed: %s", exc)
 
-    # 2. Verify MongoDB connection
     if not ping():
-        logger.error("MongoDB ping failed at startup — check MONGO_URI")
+        logger.error("MongoDB ping failed — check MONGO_URI")
     else:
         logger.info("MongoDB connection healthy")
 
-    # 3. Pre-load embedding model (takes ~30s on first deploy)
-    try:
-        from app.ml.embeddings import embed_text
-        embed_text("warmup")
-        logger.info("Embedding model warm")
-    except Exception as exc:
-        logger.error("Embedding model failed to load: %s", exc)
-
+    logger.info("Startup complete (models will load on first request)")
     yield
     logger.info("Shutting down")
 
@@ -59,7 +51,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register all routers
 app.include_router(auth_router)
 app.include_router(document_router)
 app.include_router(search_router)
