@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { X, FileText, Loader2, ArrowLeftRight } from "lucide-react";
+import { X, Loader2, ArrowLeftRight } from "lucide-react";
 import { previewDocument, type PreviewResponse } from "../../api/documents";
 import { getErrorMessage } from "../../api/client";
 import StatusBadge from "../ui/StatusBadge";
