@@ -31,7 +31,7 @@ def insert_document(doc: dict[str, Any]) -> dict[str, Any]:
     db = get_db()
     result = db[DOCUMENTS].insert_one(doc)
     doc["_id"] = result.inserted_id
-    return _serialize(doc)  # type: ignore[return-value]
+    return _serialize(doc)  
 
 
 def find_by_id(doc_id: str) -> dict[str, Any] | None:
