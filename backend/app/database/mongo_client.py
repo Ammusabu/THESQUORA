@@ -17,7 +17,7 @@ def get_client() -> MongoClient:
         _client = MongoClient(
             settings.MONGO_URI,
             serverSelectionTimeoutMS=10_000,
-            tlsCAFile=certifi.where(),     # ← explicit CA bundle
+            tlsCAFile=certifi.where(),
             appname="thesquora-backend",
         )
     return _client

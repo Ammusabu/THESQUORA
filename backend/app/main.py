@@ -1,5 +1,6 @@
 """FastAPI application entry point."""
 import logging
+import threading
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -18,21 +19,30 @@ configure_logging()
 logger = logging.getLogger(__name__)
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Only lightweight startup tasks — models load lazily on first request
+def _startup_tasks():
+    """Run in a background thread so the port binds immediately."""
     try:
         from app.ml.nltk_setup import ensure_nltk_data
         ensure_nltk_data()
+        logger.info("NLTK data ready")
     except Exception as exc:
         logger.error("NLTK setup failed: %s", exc)
 
-    if not ping():
-        logger.error("MongoDB ping failed — check MONGO_URI")
-    else:
-        logger.info("MongoDB connection healthy")
+    try:
+        ok = ping()
+        if ok:
+            logger.info("MongoDB connected")
+        else:
+            logger.error("MongoDB ping failed")
+    except Exception as exc:
+        logger.error("MongoDB check failed: %s", exc)
 
-    logger.info("Startup complete (models will load on first request)")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Bind the port FIRST, do slow work in background
+    threading.Thread(target=_startup_tasks, daemon=True).start()
+    logger.info("Startup tasks launched in background")
     yield
     logger.info("Shutting down")
 
@@ -60,4 +70,7 @@ app.include_router(analytics_router)
 
 @app.get("/api/health", tags=["meta"])
 def health():
-    return {"ok": True, "db": ping()}
+    try:
+        return {"ok": True, "db": ping()}
+    except Exception:
+        return {"ok": True, "db": False}
