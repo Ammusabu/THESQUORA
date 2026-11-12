@@ -60,7 +60,6 @@ export async function fetchDashboard(): Promise<DashboardSnapshot> {
   };
   for (const d of allDocs) {
     if (d.processing_status in processing) {
-      // @ts-expect-error -- controlled key set
       processing[d.processing_status] += 1;
     }
   }
