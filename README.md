@@ -1,8 +1,4 @@
-Got it. Here is the clean, formatted Markdown. You can copy everything from here and paste it directly into your GitHub `README.md` file.
 
-***
-
-```markdown
 <div align="center">
 
 # THESQUORA
@@ -363,4 +359,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 [⬆ Back to top](#thesquora)
 
 </div>
-```
+
