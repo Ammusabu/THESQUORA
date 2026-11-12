@@ -20,7 +20,6 @@ logger = logging.getLogger(__name__)
 
 
 def _startup_tasks():
-    """Run in a background thread so the port binds immediately."""
     try:
         from app.ml.nltk_setup import ensure_nltk_data
         ensure_nltk_data()
@@ -29,8 +28,7 @@ def _startup_tasks():
         logger.error("NLTK setup failed: %s", exc)
 
     try:
-        ok = ping()
-        if ok:
+        if ping():
             logger.info("MongoDB connected")
         else:
             logger.error("MongoDB ping failed")
@@ -40,7 +38,6 @@ def _startup_tasks():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Bind the port FIRST, do slow work in background
     threading.Thread(target=_startup_tasks, daemon=True).start()
     logger.info("Startup tasks launched in background")
     yield
@@ -53,14 +50,37 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# ============================================================
+# CORS — explicit origins only, no regex surprises
+# ============================================================
+# Build the allowed origins list from the environment.
+# - settings.FRONTEND_ORIGIN is the production URL from .env
+# - We also hardcode the two most common Vercel preview patterns
+allowed_origins = [
+    settings.FRONTEND_ORIGIN,
+    "http://localhost:5173",
+    "https://thesquora.vercel.app",
+]
+# Dedupe while preserving order
+seen = set()
+allowed_origins = [x for x in allowed_origins if not (x in seen or seen.add(x))]
+
+logger.info("CORS allowed origins: %s", allowed_origins)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_ORIGIN],
+    allow_origins=allowed_origins,
+    # allow_origin_regex=None is the default — we rely on allow_origins
+    # (using BOTH allow_origins and allow_origin_regex causes subtle bugs)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
+# ============================================================
+# Routers
+# ============================================================
 app.include_router(auth_router)
 app.include_router(document_router)
 app.include_router(search_router)
