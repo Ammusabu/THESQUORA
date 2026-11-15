@@ -35,6 +35,16 @@ def _startup_tasks():
     except Exception as exc:
         logger.error("MongoDB check failed: %s", exc)
 
+    # Warm up the embedding model in the background
+    # This prevents the first upload or search from timing out on Render
+    try:
+        from app.ml.embeddings import embed_text
+        logger.info("Warming up embedding model (this takes ~30s)...")
+        embed_text("warmup")
+        logger.info("Embedding model warm and ready")
+    except Exception as exc:
+        logger.error("Model warmup failed: %s", exc)
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
