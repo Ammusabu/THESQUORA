@@ -87,7 +87,7 @@ async def upload_document(
         repo.update_processing(created["id"], status="processing")
         category, confidence = classify_text(joined)
         repo.set_category(created["id"], category, confidence)
-        process_document(created["id"])
+        #process_document(created["id"])
     except Exception as exc:  # noqa: BLE001
         logger.exception("Post-insert processing failed: %s", exc)
         repo.update_processing(created["id"], status="failed", error=str(exc))
