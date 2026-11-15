@@ -218,23 +218,14 @@ def unanswered_queries(user_id: str, is_admin: bool, limit: int = 10) -> list[di
         # Re-check the query against the current corpus.
         still_empty = True
         try:
-            qvec = embed_text(q)
-            v_hits = chunks_repo.vector_search(
-                query_vector=qvec,
-                limit=3,
-                num_candidates=50,
-                filter_conditions=perm,
+            # Use keyword search only to avoid loading the heavy embedding model
+            # on the Render free tier (causes OOM crashes and 502 errors)
+            k_hits = chunks_repo.keyword_search(
+                query=q, limit=3, skip=0, filter_conditions=perm,
             )
-            if v_hits:
+            if k_hits:
                 still_empty = False
-            else:
-                k_hits = chunks_repo.keyword_search(
-                    query=q, limit=3, skip=0, filter_conditions=perm,
-                )
-                if k_hits:
-                    still_empty = False
         except Exception:
-            # On retrieval error, do NOT flag as a gap — fail open
             still_empty = False
 
         if not still_empty:
